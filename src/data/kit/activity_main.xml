@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MMS Test"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/dest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Recipient phone number"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Optional text (blank ok)"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/pickBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Video" />
+
+    <TextView
+        android:id="@+id/maxLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Max attachment: 1000 KB" />
+
+    <SeekBar
+        android:id="@+id/maxSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="1900"
+        android:progress="900" />
+
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send MMS" />
+
+    <Button
+        android:id="@+id/copyLogBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Copy Log" />
+
+    <TextView
+        android:id="@+id/log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:textSize="11sp"
+        android:scrollbars="vertical"
+        android:background="#11000000"
+        android:padding="8dp"
+        android:gravity="top" />
+</LinearLayout>

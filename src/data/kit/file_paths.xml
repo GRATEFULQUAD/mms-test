@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- The composed PDU is written to cacheDir, so declare it here. -->
+    <cache-path name="mms_cache" path="." />
+</paths>
