@@ -2,11 +2,12 @@
 
 A **minimal, single-Activity Android app** whose only job is to send a real
 carrier video MMS and log every stage of the pipeline. It is a throwaway
-reference implementation: you paste these files into a new Android Studio
-project, build it, install it on the phone, and press **Send**.
+reference implementation: this folder **is** a complete Android Studio project,
+so open it directly, sync, build, install it on the phone, and press **Send**.
 
-> Base44 cannot run native Android code. This page is a copy-paste source kit.
-> The app runs on your phone, not here.
+> Base44 cannot run native Android code. This page mirrors a real Gradle project
+> that lives on disk under `src/data/kit/`. Clone the repo and open that folder
+> directly in Android Studio.
 
 ## What it does
 
@@ -49,31 +50,20 @@ notifications, or share-intents. It only sends one MMS.
 
 ## Setup (Android Studio)
 
-1. **New Project → Empty Activity (Kotlin)**, minSdk 23, package `com.mmstest`.
-   (Set the same `namespace` and `applicationId` in `app/build.gradle.kts` — if
-   you used a different package, update `applicationId`/`namespace` and the
-   `com.mmstest` package lines in the three `.kt` files and the manifest's
-   authority `${applicationId}.mmsprovider` resolves automatically.)
-2. Replace these generated files with the ones on the left tree:
-   - `settings.gradle.kts`
-   - `build.gradle.kts` (root)
-   - `app/build.gradle.kts`
-   - `app/src/main/AndroidManifest.xml`
-   - `app/src/main/res/layout/activity_main.xml`
-   - `app/src/main/res/values/strings.xml`
-   - `app/src/main/res/xml/file_paths.xml` (create the `xml/` folder)
-3. Add the Kotlin sources under `app/src/main/java/com/mmstest/`:
-   - `MainActivity.kt`
-   - `mms/MmsSender.kt`
-   - `mms/VideoTranscoder.kt`
-   - `mms/DiagnosticLogger.kt`
-4. **Sync Gradle**, then **Run** on the test phone (the one with the SIM and the
-   carrier you want to validate). Grant the `SEND_SMS` runtime permission when
-   prompted.
-5. From another phone, send **a short video you want to test** to *yourself*
+The kit is a ready-to-sync Gradle project. No files to move and no "New Project"
+wizard needed.
+
+1. **Open** this folder (`src/data/kit/`) directly in Android Studio:
+   `File → Open → select the folder`. It contains `settings.gradle.kts` at the
+   root and an `app/` module, so Studio recognises it as a project.
+2. **Sync Gradle** (Studio prompts automatically; otherwise the elephant icon).
+   The included Gradle wrapper pins Gradle 8.7 to match AGP 8.5.2.
+3. **Run** on the test phone (the one with the SIM and the carrier you want to
+   validate). Grant the `SEND_SMS` runtime permission when prompted.
+4. From another phone, send **a short video you want to test** to *yourself*
    (or pick a tiny clip ≤ a few seconds). Enter the recipient's number, press
    **Send MMS**. Watch the log.
-6. Ask the recipient whether the video arrived. **Copy Log** to keep the full
+5. Ask the recipient whether the video arrived. **Copy Log** to keep the full
    evidence trail.
 
 ## Reading the result
