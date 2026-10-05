@@ -180,10 +180,12 @@ class MainActivity : AppCompatActivity() {
                 attachmentName = "video.mp4"
                 DiagnosticLogger.log("[TRANSCODE] Using transcoded: ${attachmentBytes.size} bytes, MIME=$attachmentMime, height=${result.height}px")
                 if (attachmentBytes.size > maxBytes) {
-                    DiagnosticLogger.log("[TRANSCODE] WARNING: still over ceiling; carrier may reject (MMS_ERROR_IO_ERROR).")
+                    DiagnosticLogger.log("[TRANSCODE] ERROR: Transcoded file (${attachmentBytes.size} bytes) exceeds ceiling (${maxBytes} bytes); aborting send.")
+                    return
                 }
             } else {
-                DiagnosticLogger.log("[TRANSCODE] Transcode FAILED. Falling back to ORIGINAL bytes; carrier will likely reject.")
+                DiagnosticLogger.log("[TRANSCODE] Transcode FAILED; aborting send because attachment exceeds ceiling (${maxBytes} bytes).")
+                return
             }
         } else {
             DiagnosticLogger.log("[SEND] Original within ceiling; skipping transcode.")

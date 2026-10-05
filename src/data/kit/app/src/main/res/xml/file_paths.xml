@@ -2,4 +2,6 @@
 <paths>
     <!-- The composed PDU is written to cacheDir, so declare it here. -->
     <cache-path name="mms_cache" path="." />
+    <files-path name="mms_files" path="." />
+    <external-cache-path name="mms_ext_cache" path="." />
 </paths>
